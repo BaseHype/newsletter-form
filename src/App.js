@@ -1,24 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import Home from './Home';
+import Success from './Success';
+import { useState } from 'react';
 
 function App() {
+  const [successful, setSuccessful] = useState(false);
+  const [emailAddress, setEmailAddress] = useState('');
+  let content;
+
+  if(!successful) {
+    content = <Home successful={setSuccessful} emailAddress={setEmailAddress}/>
+  } else {
+    content = <Success successful={setSuccessful} emailAddress={emailAddress}/>
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className="App">
+        <div className="content">
+          {content}
+        </div>
+      </div>
   );
 }
 
