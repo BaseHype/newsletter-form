@@ -1,8 +1,18 @@
 import './Home.css';
-import React from 'react';
-import { ReactComponent as IllustrationDesktop } from './images/illustration-sign-up-desktop.svg'
+import React, { useState, useEffect } from 'react';
+import { ReactComponent as IllustrationDesktop } from './images/illustration-sign-up-desktop.svg';
+import { ReactComponent as IllustrationMobile } from './images/illustration-sign-up-mobile.svg';
 
 const Home = ({successful, emailAddress}) => {
+    const [width, setWidth] = useState(window.outerWidth);
+    const breakpoint = 375;
+
+    useEffect(() => {
+        const handleResize = () => setWidth(window.outerWidth);
+        console.log(width);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    });
 
     const handleSubmit = e => {
         successful(true);
@@ -30,7 +40,8 @@ const Home = ({successful, emailAddress}) => {
                 </form>
             </div>
             <div className="image-container">
-                <IllustrationDesktop />
+                {width > breakpoint && <IllustrationDesktop className="desktop" />}
+                {width <= breakpoint && <IllustrationMobile className="mobile" />}
             </div>
         </div>
     );

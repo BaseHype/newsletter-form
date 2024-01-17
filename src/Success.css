@@ -6,3 +6,13 @@
 h1 {
     margin: 10px 0;
 }
+
+@media screen and (max-width: 375px) {
+    .success-content {
+        padding-top: 90px;
+    }
+
+    p {
+        padding-bottom: 90px;
+    }
+}

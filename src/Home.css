@@ -59,3 +59,29 @@ button:hover {
     background: linear-gradient(to right, hsl(350, 89%, 58%),hsl(4, 100%, 67%));
     box-shadow: 0 8px 20px hsl(4, 100%, 67%);
 }
+
+@media screen and (max-width: 375px) {
+    .home {
+        display: flex;
+        flex-direction: column-reverse;
+        width: 100vw;
+    }
+
+    .mobile {
+        width: 100%;
+    }
+
+    .home-content {
+        min-width: 250px;
+        margin: 0 20px;
+    }
+
+    h1 {
+        font-size: 2em;
+        padding-top: 25px;
+    }
+
+    p, li {
+        font-size: 14px;
+    }
+}
